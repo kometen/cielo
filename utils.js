@@ -11,9 +11,8 @@ function checkFacebookStatus() {
             var appToken = '860675960666169|00_5tkwxjsUj_u6P1-U1IXjj9mE';
             FB.api('/me', 'GET', { 'fields':'id,name,email' }, function(response) {
                 var name = response.name;
-                var email = response.email;
                 var id = response.id;
-                console.log('name: ' + name + ', email: ' + email + ', appToken: ' + appToken);
+                console.log('name: ' + name + ', appToken: ' + appToken);
                 var div = document.getElementById('login-name');
                 div.innerHTML = 'Namn: ' + name;
                 // Get events from dynamodb.
