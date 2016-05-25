@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<title>Cielo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.3.5.min.js"></script>
+<script src='utils.js'></script>
+<style>
+    .logo-and-text { display: inline-block; }
+    .center-div { display: table-cell; vertical-align: middle; text-align: center; }
+    .airbelow { padding-bottom: 6px; }
+    h2 { margin: 0px; }
+</style>
+<script>
+window.fbAsyncInit = function() {
+    FB.init({
+        appId : '860675960666169',
+        xfbml : true,
+        version : 'v2.6'
+    });
+    checkFacebookStatus();
+};
+(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/us_EN/sdk.js#xfbml=1&version=v2.6&appId=860675960666169";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div class='container'>
+    <div class='row'>
+        <div class='center-div six columns'>
+            <h2 class="logo-and-text">Cielo</h2>
+            <img src="logo.jpeg" alt="PT-AMOK" height="26">
+        </div>
+    </div>
+    <div class='row'>
+        <div class='center-div six columns airbelow'>
+            <div class='' id='login-name'>Not logged in</div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class=' center-div six columns airbelow fb-login-button' id='fblogin' data-max-rows='1'
+            data-size='xlarge' data-show-faces='false' data-auto-logout-link='true' onlogin='checkFacebookStatus()'></div>
+    </div>
+    <div id='images'></div>
+    <div id='reg_status'></div>
+</div>
