@@ -13,14 +13,14 @@ function checkFacebookStatus() {
                 var name = response.name;
                 var email = response.email;
                 var id = response.id;
-                //console.log('name: ' + name + ', email: ' + email + ', appToken: ' + appToken);
+                console.log('name: ' + name + ', email: ' + email + ', appToken: ' + appToken);
                 var div = document.getElementById('login-name');
                 div.innerHTML = 'Namn: ' + name;
                 // Get events from dynamodb.
                 amazonas(accessToken, email, name, id, appToken);
             });
         } else if (response.status === 'not_authorized') {
-            //console.log('User has not authorized the app');
+            console.log('User has not authorized the app');
         } else {
             var div = document.getElementById('login-name');
             div.innerHTML = 'Not logged in';
@@ -28,7 +28,7 @@ function checkFacebookStatus() {
             adiv.innerHTML = '';
             var rdiv = document.getElementById('reg_status');
             rdiv.innerHTML = '';
-            //console.log('Not logged in to FB');
+            console.log('Not logged in to FB');
         }
     });
 }
@@ -63,7 +63,7 @@ function amazonas(accessToken, email, name, id, appToken) {
         if (err) {
             console.log(JSON.stringify(err, null, 2));
         } else {
-            //console.log(JSON.stringify(data, null, 2));
+            console.log(JSON.stringify(data, null, 2));
 
             var adiv = document.getElementById('images');
             adiv.innerHTML = "";
@@ -72,7 +72,7 @@ function amazonas(accessToken, email, name, id, appToken) {
 
             for (var i = 0; i < array_length; ++i) {
                 var obj = data.Items[i];
-                //console.log('item nr. ' + i + ', ' + obj.username + ', ' + obj.filename);
+                console.log('item nr. ' + i + ', ' + obj.username + ', ' + obj.filename);
 
                 adiv.innerHTML = adiv.innerHTML + "<div class='row'><div class='center-div six columns'>" + obj.username + ", " + obj.filename + "</div></div>";
                 adiv.innerHTML = adiv.innerHTML + "<div class='row'><div class='center-div six columns'><button id='button_id_" + i + "' class='button-primary'>Click</button></div></div>";
