@@ -1,2 +1,2 @@
 # cielo
-Example code to show Amazon Cognito and IAM and Facebook login integration.
+Example code to demonstrate Amazon Cognito and IAM and Facebook login integration.
