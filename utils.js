@@ -9,14 +9,14 @@ function checkFacebookStatus() {
             FB.login(function(){}, {scope: 'publish_actions'});
             var accessToken = response.authResponse.accessToken;
             var appToken = '860675960666169|00_5tkwxjsUj_u6P1-U1IXjj9mE';
-            FB.api('/me', 'GET', { 'fields':'id,name,email' }, function(response) {
+            FB.api('/me', 'GET', { 'fields':'id,name' }, function(response) {
                 var name = response.name;
                 var id = response.id;
                 console.log('name: ' + name + ', appToken: ' + appToken);
                 var div = document.getElementById('login-name');
                 div.innerHTML = 'Namn: ' + name;
                 // Get events from dynamodb.
-                amazonas(accessToken, email, name, id, appToken);
+                amazonas(accessToken, name, id, appToken);
             });
         } else if (response.status === 'not_authorized') {
             console.log('User has not authorized the app');
@@ -32,7 +32,7 @@ function checkFacebookStatus() {
     });
 }
 
-function amazonas(accessToken, email, name, id, appToken) {
+function amazonas(accessToken, name, id, appToken) {
     AWS.config.update({
         region: region,
         credentials: new AWS.CognitoIdentityCredentials({
